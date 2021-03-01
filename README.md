@@ -212,7 +212,7 @@ wrapper procedure. Then define the alias and the
 name of the PHP function that handles this wrapper.
 
 ```php
-function my_hazel_function($ind,$arg){
+function my_hazel_function($ins,$arg){
 	return "some code";
 }
 ```
@@ -231,7 +231,7 @@ Similarly, you may make custom block wrappers.
 ```javascript
 //k	mbk	my_hazel_block
 
-mfn(arg1;arg2){ Code... } else { Code... }
+mbk(arg1;arg2){ Code... } else { Code... }
 ```
 
 The PHP function handling the block gets two more 
@@ -241,7 +241,7 @@ by `;`, the output of `#A` or `#R` will still be
 separated by commas for better injectability.
 
 ```php
-function my_hazel_function($ind,$arg,$blk,$els){
+function my_hazel_function($ins,$arg,$blk,$els){
 	return "some code";
 }
 ```
