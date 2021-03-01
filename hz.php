@@ -4,9 +4,9 @@
 	
 	// .............................................................
 
-	include_once('hazelr.php');		// use reporting version
-	include_once('hazel-samples.php');	// sample function hooks
-	include_once('csssh.php');		// CSS Short-hand filter
+	require_once('hazelr.php');		// use reporting version
+	require_once('hazel-samples.php');	// sample function hooks
+	require_once('csssh.php');		// CSS Short-hand filter
 	
 	header("Content-type: text/javascript\r\n");
 
@@ -18,6 +18,9 @@
 
 	// load all hazel files in foler. output, file, bytes, print size:
 	$g = glob($QUERY); $o=''; $f=''; $n=0; $p='';
+
+	// if one file was found and it was a folder, include contents:
+	if(count($g)==1&&is_dir($g[0])){ $g = glob($g.'/*.hz'); }
 
 	// only proceed if files found:
 	$c = count($g); if($c==0){ echo "// Nothing found for... $QUERY"; exit; }
