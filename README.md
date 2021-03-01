@@ -262,7 +262,7 @@ writing new function and block wrapper hooks.
 ```javascript
 //k	strf	hazel_string_filter
 
-strf(func;<>;""){ unescaped string data... }
+mystring = strf(func;<>;""){ unescaped string data... };
 ```
 
 Filters the contents of the block with a list of 
