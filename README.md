@@ -1,5 +1,11 @@
-# hazel
-Preprocessor for JavaScript, written in PHP.
+# Hazel Preprocessor
+
+Macro-based preprocessor for JavaScript, written in PHP.
+
+Uses string-based interpretation without use of outside 
+libraries. Native functions used are well documented for 
+future ports to other languages.
+
 Package includes the following files...
 
 * hazel.php ............. plain hazel program
@@ -50,6 +56,8 @@ new structural blocks resembling for(){} or while(){}...
 //i	include another .hz file
 //j	include unaltered script
 //c	define starter for comment line
+
+//_	carry long definitions over lines
 ```
 
 You may use `##` instead of `//` if you want to preserve 
@@ -172,6 +180,9 @@ mfn(arg1;arg2){ Code... } else { Code... }
 
 The PHP function handling the block gets two more 
 arguments, for the `#B` block and `#E` else block.
+While the arguments in a block wrapper are separated
+by `;`, the output of `#A` or `#R` will still be 
+separated by commas for better injectability.
 
 ```php
 function my_hazel_function($ind,$arg,$blk,$els){
@@ -182,3 +193,112 @@ function my_hazel_function($ind,$arg,$blk,$els){
 The `else` clauses are entirely optional. They are
 checked for with every custom block, but if you don't
 use them, the clause is just ignored.
+
+## Sample hooks included
+
+These functions are defined in hazel-samples.php and
+provide some added functionality and inspiration for
+writing new function and block wrapper hooks.
+
+```javascript
+//k	strf	hazel_string_filter
+
+strf(func;<>;""){ unescaped string data... }
+```
+
+Filters the contents of the block with a list of 
+functions or 3 built-in filters: `""` `''` and `<>`.
+Any PHP function may be a filter, the function should
+take the string contents as a single argument and 
+return the finished string. Functions like `rtrim` or 
+`urlencode` are already perfect for this.
+
+The filters are executed from left to right, so the 
+example runs _func_ over the block, then escapes HTML
+entities, then escapes the string in double quotes.
+
+```javascript
+//p	img64	hazel_base64_image
+
+myimage = img64(my/image.png);
+myimages = img64(my/1.jpeg,my/2.gif,my/3.png);
+```
+
+Allows you to get an image on your server, escaped
+as a base64 data-uri. Providing multiple arguments
+will produce an _array of strings_ with the data-uris
+of each argument, in order.
+
+```javascript
+//p	phpv	hazel_php_variable
+
+username = phpv($_SESSION.user.name);
+```
+
+This module allows you to spill the value of any PHP
+variable in javascript using the phpv() function, or 
+whatever shortcut you choose.
+
+This module uses a dotted notation for arrays and keys.
+Because arrays may only be one dimensional in PHP, as 
+long as the arrays are in the correct place you do not
+need to specify nesting structure for arrays and keys...
+
+```php
+phpv($data.user.$userno.$cno.post.16);		// vs:
+
+echo $GLOBALS['data']['user'][$GLOBALS['userno']
+	[$GLOBALS['cno']]]['post'][16];
+```
+
+Any particle beginning with the characters `$ @ # % !`
+indicates a superglobal key for `$GLOBALS`, `$_SESSION`,
+`$_POST`, `$_GET` and `$_SERVER` respectively. Any 
+particle with no _sigil_ is a string or integer key.
+The indices 16 and '16' are the same index anyway, so 
+quotes are not needed for string keys.
+
+```javascript
+//k	ifv	hazel_if_variable
+
+username = ifv($_SESSION.loggedin){ ... } else { ... }
+```
+
+The final module adds a _single variable evaluation_ as
+of this version. There is no math or < > = comparison.
+The module will select the block or else block based on 
+the _truthyness_ of the PHP variable.
+
+## Sample macros included
+
+The file def.hz contains a set of macros that radically 
+alter the syntax of javascript and also invokes the four
+sample hooks in the previous section. The hz.php script is
+setup to include this file automatically.
+
+You will undoubtedly want to change or edit this file to
+your specification.
+
+## Feedback and future considerations
+
+Considering adding `#L`, `#U` and `#^` for looping part of
+a template while any arguments remain, or while there are 
+enough arguments to address every `#N` or `#X` in the loop.
+
+Open to new ideas for template commands or general Hazel 
+commands. The language previously had command-level logic
+for evaluating single variables...
+
+* //?	if
+* //!	if-not
+* //~	else
+* //%	select
+* //:	case
+* //;	break; case
+* //x	end
+* //xxx	(stackable)
+* //x*	end everything
+
+But after adding block wrapper PHP function hooks, it seemed 
+pointless and needlessly complex to have two completely 
+different types of logical structures, so that was removed.
