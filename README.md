@@ -91,6 +91,20 @@ EL..SA('id','ex-002');
 EL..SC("example");
 ```
 
+Any block wrapper you create may also have an _else_ 
+clause associated with it. Use `#E` in your template
+to include the else clause somewhere.
+
+```javascript
+##b	forln	if(!#0||!#0.length||#0.length==0){#E}
+##_             else { for(#1=0;#1<#0.length;#1++){#B} }
+
+// USE...
+
+forln(arr;i){ do.something(arr[i]); }
+else { do.something_else(); }
+```
+
 ## Template Arguments
 
 Templates for function and block wrappers allow
@@ -116,5 +130,55 @@ rest of the commands are plugged in afterwards.
 separated by commas_, `#R` will only supply the
 arguments not caught by other commands.
 
-## Function and block wrapper hooks
+## Function wrapper procedure hooks
 
+It is very easy to write PHP functions to handle 
+function and block wrappers. This allows you the
+ability to add server-side functions to hazel.
+The hazel-samples.php file contains a number of
+sample function and block wrapper hooks to use 
+for inspiration.
+
+```javascript
+//p	mfn	my_hazel_function
+
+mfn(arg1,arg2);
+```
+
+Use the `//p` hazel command to define a function
+wrapper procedure. Then define the alias and the
+name of the PHP function that handles this wrapper.
+
+```php
+function my_hazel_function($ind,$arg){
+	return "some code";
+}
+```
+
+This function receives the arguments separated by `,`
+as individual strings. Hazel tracks bracket depth and
+is wise to _strings_ and _regular expressions_ and can
+accurately find the correct `,`s to split by.
+
+## Block wrapper procedure hooks
+
+Similarly, you may make custom block wrappers.
+
+```javascript
+//k	mbk	my_hazel_block
+
+mfn(arg1;arg2){ Code... } else { Code... }
+```
+
+The PHP function handling the block gets two more 
+arguments, for the `#B` block and `#E` else block.
+
+```php
+function my_hazel_function($ind,$arg,$blk,$els){
+	return "some code";
+}
+```
+
+The `else` clauses are entirely optional. They are
+checked for with every custom block, but if you don't
+use them, the clause is just ignored.
