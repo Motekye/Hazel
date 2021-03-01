@@ -14,7 +14,7 @@ hazelr.php ............ with reporting feature
 hazel-samples.php ..... sample function hooks
 hz.php ................ sample invocation
 def.hz ................ sample shortcuts
-csssh.php ............. CSS Short Hand macros
+csssh.php ............. CSS Short-hand macros
 ```
 
 The sample invocation is a basic PHP script that includes
