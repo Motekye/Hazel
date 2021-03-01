@@ -27,6 +27,15 @@ included in the output. Usage...
 <script type="text/javascript" src="hz.php?api/class-*.hz"></script>
 ```
 
+You may also disable minification by opening the querystring
+with the `!` character. This will stream all whitespace and 
+comments, including your hazel commands, and is useful for
+debugging...
+
+```html
+<script type="text/javascript" src="hz.php?!my/file.hz"></script>
+```
+
 The sample invocation also includes _hazel-samples.php_ and runs
 hazel() over _def.hz_ prior to loading the request. This is
 how you would define your own set of custom function hooks
@@ -34,7 +43,7 @@ and common macros to all your projects. I included my own
 with this package as examples, but I would assume anyone 
 using Hazel would want to make their own shortcuts.
 
-Make copies of and edit _hz.php_ to suit your needs.
+Make copies of and edit _hz.php_ and _def.hz_ to suit your needs.
 
 Hazel (c) 2017-2021 - 1002px.com - released under MIT license.
 
