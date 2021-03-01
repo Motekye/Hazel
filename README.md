@@ -14,6 +14,7 @@ hazelr.php ............ with reporting feature
 hazel-samples.php ..... sample function hooks
 hz.php ................ sample invocation
 def.hz ................ sample shortcuts
+csssh.php ............. CSS Short Hand macros
 ```
 
 The sample invocation is a basic PHP script that includes
@@ -251,7 +252,7 @@ The `else` clauses are entirely optional. They are
 checked for with every custom block, but if you don't
 use them, the clause is just ignored.
 
-## Sample hooks included
+# Sample hooks included
 
 These functions are defined in _hazel-samples.php_ and
 provide some added functionality and inspiration for
@@ -343,6 +344,41 @@ setup to include this file automatically.
 
 You will undoubtedly want to change or edit this file to
 your specification.
+
+## Macro recursivity
+
+All match macros and wrappers insert their output ahead
+of the pointer, rather than behind it. This means that
+the injected code will again be checked for matches and
+wrappers. This makes compounded shortcuts like this one
+possible...
+
+```javascript
+//k	strf	hazel_string_filter
+//=	(#	document.getElementById(
+//=	:st	.style
+//=	:csssh{	:st=strf(csssh;""){
+
+// USE...
+
+(#"navi"):csssh{ PSF; T:0; R:0; W:100^; H:400^; B#000; };
+
+// TO PRODUCE...
+
+document.getElementById("navi").style =
+	" position:fixed; top:0; right:0; width:100px; 
+	height:400px; background-color:#000; ";
+```
+
+Using a function also included in this package called 
+CSSSH (CSS Short Hand) for crunching down CSS properties.
+Any CSS preprocessor could work as long as the function
+takes one parameter and outputs the finished string.
+
+The example shows a `:csssh{` macro that itself contains
+more macros. Your macros may be as recursive as you need,
+but there is no protection from macros with infinite 
+recursion in this release.
 
 ## Feedback and future considerations
 
