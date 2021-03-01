@@ -90,3 +90,31 @@ EL..IH = "Hello World.";
 EL..SA('id','ex-002');
 EL..SC("example");
 ```
+
+## Template Arguments
+
+Templates for function and block wrappers allow
+numbered arguments `#0`, `#1`... `#99`. You may 
+also use any of the following values as of this 
+version...
+
+```
+#C	Argument count
+#A	All arguments separated by ,
+#N	Shift argument from left
+#X	Pop argument from right
+#R	Remainder of arguments
+#B	Block for block wrappers
+#E	Else block for block wrappers
+#I	Instance number (0-based)
+```
+
+The numbered arguments are resolved first, then
+the `#N` and `#X` commands in order, then the 
+rest of the commands are plugged in afterwards.
+`#A` will supply _all arguments regardless, 
+separated by commas_, `#R` will only supply the
+arguments not caught by other commands.
+
+## Function and block wrapper hooks
+
