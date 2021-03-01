@@ -98,7 +98,7 @@ put quotes around the file names.
 
 // USE...
 
-if<>(elm){ do.something(elm) }
+if<>(elm){ do.something(elm); }
 else { do.something_else(); }
 ```
 
