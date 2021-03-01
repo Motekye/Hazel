@@ -29,3 +29,43 @@ using Hazel would want to make their own shortcuts.
 Make copies of and edit hz.php to suit your needs.
 
 Hazel (c) 2017-2021 - 1002px.com - released under MIT license.
+
+## Using Hazel
+
+Hazel uses different types of macro shortcuts to truncate
+javascript (or any similar language) to your specification.
+Shortcuts all take the form (slash)(slash)(something)(tab),
+and allow you to alter the syntax of javascript with match
+macros, or wrappers that transliterate function calls and 
+new structural blocks resembling for(){} or while(){}...
+
+```javascript
+//= exact match macro
+//s macros exclusively in strings
+//v macros without : after or . before
+//f function wrapper template
+//b block wrapper template
+//p procedure hook for function wrapper
+//k procedure hook for block wrapper
+//i include another .hz file
+//j include unaltered script
+//c define starter for comment line
+```
+
+## Examples
+
+```javascript
+//b after setTimeout(function(){#B},#0);
+
+// USE...
+
+after(1000){ do.something(); }
+```
+
+```javascript
+//b forln for(#1=0;#1<#0.length;#1++){#B}
+
+// USE...
+
+forln(arr;i){ do.something(arr[i]); }
+```
