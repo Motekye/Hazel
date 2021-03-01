@@ -106,7 +106,7 @@ clause associated with it. Use `#E` in your template
 to include the else clause somewhere.
 
 ```javascript
-##b	forln	if(!#0||!#0.length||#0.length==0){#E}
+##b	forln	if(!#0||!#0.length){#E}
 ##_             else { for(#1=0;#1<#0.length;#1++){#B} }
 
 // USE...
@@ -114,6 +114,10 @@ to include the else clause somewhere.
 forln(arr;i){ do.something(arr[i]); }
 else { do.something_else(); }
 ```
+
+The previous example executing the _else_ clause if the
+first argument is not iterable or has 0 length, otherwise
+executing the block once for each iteration.
 
 ## Template Arguments
 
