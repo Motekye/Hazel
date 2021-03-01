@@ -140,12 +140,17 @@ rest of the commands are plugged in afterwards.
 separated by commas_, `#R` will only supply the
 arguments not caught by other commands.
 
+`#C` spills an integer for the number of arguments
+provided, `#I` is an _instance number_. Hazel
+remembers how many times a shortcut is used, and 
+that number is available for use in your template.
+
 ## Function wrapper procedure hooks
 
 It is very easy to write PHP functions to handle 
 function and block wrappers. This allows you the
 ability to add server-side functions to hazel.
-The hazel-samples.php file contains a number of
+The _hazel-samples.php_ file contains a number of
 sample function and block wrapper hooks to use 
 for inspiration.
 
@@ -165,10 +170,12 @@ function my_hazel_function($ind,$arg){
 }
 ```
 
-This function receives the arguments separated by `,`
-as individual strings. Hazel tracks bracket depth and
-is wise to _strings_ and _regular expressions_ and can
-accurately find the correct `,`s to split by.
+This function receives the _index number_, which is how
+many times this shortcut has appeared. The second argument
+is an array of the arguments separated by `,` as individual 
+strings. Hazel tracks bracket depth and is wise to _strings_ 
+and _regular expressions_ and can accurately find the 
+correct `,`s to split the parameters by.
 
 ## Block wrapper procedure hooks
 
