@@ -40,16 +40,16 @@ macros, or wrappers that transliterate function calls and
 new structural blocks resembling for(){} or while(){}...
 
 ```javascript
-//= exact match macro
-//s macros exclusively in strings
-//v macros without : after or . before
-//f function wrapper template
-//b block wrapper template
-//p procedure hook for function wrapper
-//k procedure hook for block wrapper
-//i include another .hz file
-//j include unaltered script
-//c define starter for comment line
+//=	exact match macro
+//s	macros exclusively in strings
+//v	macros without : after or . before
+//f	function wrapper template
+//b	block wrapper template
+//p	procedure hook for function wrapper
+//k	procedure hook for block wrapper
+//i	include another .hz file
+//j	include unaltered script
+//c	define starter for comment line
 ```
 
 You may use `##` instead of `//` if you want to preserve 
@@ -59,7 +59,7 @@ the code, these will be turned into `//`.
 ## Examples
 
 ```javascript
-//b after setTimeout(function(){#B},#0);
+//b	after	setTimeout(function(){#B},#0);
 
 // USE...
 
@@ -67,7 +67,7 @@ after(1000){ do.something(); }
 ```
 
 ```javascript
-##b forln for(#1=0;#1<#0.length;#1++){#B}
+##b	forln	for(#1=0;#1<#0.length;#1++){#B}
 
 // USE...
 
@@ -75,12 +75,14 @@ forln(arr;i){ do.something(arr[i]); }
 ```
 
 ```javascript
-//= (<> document.createElement(
-//v BODY  document.body
-//= ..AP  .appendChild
-//= ..IH  .innerHTML
-//= ..SA  .setAttribute
-//= ..SC( .setAttribute('class',
+//=	(<>	document.createElement(
+//v	BODY	document.body
+//=	..AP	.appendChild
+//=	..IH	.innerHTML
+//=	..SA	.setAttribute
+//=	..SC(	.setAttribute('class',
+
+// USE...
 
 var EL = (<>'div');
 BODY..AP(EL);
