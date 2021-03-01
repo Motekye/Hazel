@@ -87,6 +87,6 @@ forln(arr;i){ do.something(arr[i]); }
 var EL = (<>'div');
 BODY..AP(EL);
 EL..IH = "Hello World.";
-EL..SC = "example";
 EL..SA('id','ex-002');
+EL..SC("example");
 ```
