@@ -66,7 +66,32 @@ You may use `##` instead of `//` if you want to preserve
 syntax highlighting on the command. If you are not minifying
 the code, these will be turned into `//` commands.
 
-## Examples
+## Comment lines and includes
+
+```javascript
+//c	/*!*/
+
+(function(){
+	do.something();
+/*!*/	console.log(something);
+	return something;
+})();
+```
+
+Comment lines with `//c` or `##c` expect a single term, which 
+when found at the beginning of a line, will strip that line
+from the output. This is useful for adding and removing lines
+of debugging code by only changing a single value.
+
+```javascript
+//i	path/to/script.hz
+//j	path/to/script.js
+```
+
+Include another Hazel script, or plain javascript file. Do not
+put quotes around the file names.
+
+## Function and block wrappers
 
 ```javascript
 ##b	after	setTimeout(function(){#B},#0);
@@ -302,15 +327,17 @@ Open to new ideas for template commands or general Hazel
 commands. The language previously had command-level logic
 for evaluating single variables...
 
-* //?	if
-* //!	if-not
-* //~	else
-* //%	select
-* //:	case
-* //;	break; case
-* //x	end
-* //xxx	(stackable)
-* //x*	end everything
+```
+//?	if
+//!	if-not
+//~	else
+//%	select
+//:	case
+//;	break; case
+//x	end
+//xxx	(stackable)
+//x*	end everything
+```
 
 But after adding block wrapper PHP function hooks, it seemed 
 pointless and needlessly complex to have two completely 
