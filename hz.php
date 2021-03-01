@@ -9,7 +9,7 @@
 	
 	header("Content-type: text/javascript\r\n");
 
-	$QUERY = urldecode(substr($_SERVER['REQUEST_URI'],1));
+	$QUERY = urldecode($_SERVER['QUERY_STRING']);
 
 	// start request with ! to disable minify, start with ? for reporting:
 	if(substr($QUERY,0,1)=='!'){ $QUERY=substr($QUERY,1); $m=false; } else { $m=true; }
