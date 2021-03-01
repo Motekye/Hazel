@@ -187,6 +187,10 @@ rest of the commands are plugged in afterwards.
 separated by commas_, `#R` will only supply the
 arguments not caught by other commands.
 
+While the arguments in a block wrapper are separated
+by `;`, the output of `#A` or `#R` will still be 
+separated by comma `,` for better injectability.
+
 `#C` spills an integer for the number of arguments
 provided, `#I` is an _instance number_. Hazel
 remembers how many times a shortcut is used, and 
@@ -236,9 +240,6 @@ mbk(arg1;arg2){ Code... } else { Code... }
 
 The PHP function handling the block gets two more 
 arguments, for the `#B` block and `#E` else block.
-While the arguments in a block wrapper are separated
-by `;`, the output of `#A` or `#R` will still be 
-separated by commas for better injectability.
 
 ```php
 function my_hazel_function($ins,$arg,$blk,$els){
