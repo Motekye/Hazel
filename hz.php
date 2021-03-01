@@ -6,6 +6,7 @@
 
 	include_once('hazelr.php');		// use reporting version
 	include_once('hazel-samples.php');	// sample function hooks
+	include_once('csssh.php');		// CSS Short-hand filter
 	
 	header("Content-type: text/javascript\r\n");
 
