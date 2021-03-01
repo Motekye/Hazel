@@ -221,12 +221,12 @@ function my_hazel_function($ins,$arg){
 }
 ```
 
-This function receives the _index number_, which is how
-many times this shortcut has appeared. The second argument
-is an array of the arguments separated by `,` as individual 
-strings. Hazel tracks bracket depth and is wise to _strings_ 
-and _regular expressions_ and can accurately find the 
-correct `,`s to split the parameters by.
+This function receives the _instance number_, which is how
+many times this shortcut has appeared starting with zero. 
+The second argument is an array of the arguments separated 
+by `,` as individual strings. Hazel tracks bracket depth 
+and is wise to _strings_ and _regular expressions_ and can 
+accurately find the correct `,`s to split the parameters by.
 
 ## Block wrapper procedure hooks
 
@@ -238,8 +238,8 @@ Similarly, you may make custom block wrappers.
 mbk(arg1;arg2){ Code... } else { Code... }
 ```
 
-The PHP function handling the block gets two more 
-arguments, for the `#B` block and `#E` else block.
+The PHP function handling the block gets two extra 
+arguments for the `#B` block and `#E` else block.
 
 ```php
 function my_hazel_function($ins,$arg,$blk,$els){
@@ -256,6 +256,8 @@ use them, the clause is just ignored.
 These functions are defined in _hazel-samples.php_ and
 provide some added functionality and inspiration for
 writing new function and block wrapper hooks.
+
+#### hazel_string_filter
 
 ```javascript
 //k	strf	hazel_string_filter
@@ -274,6 +276,8 @@ The filters are executed from left to right, so the
 example runs _func_ over the block, then escapes HTML
 entities, then escapes the string in double quotes.
 
+#### hazel_base64_image
+
 ```javascript
 //p	img64	hazel_base64_image
 
@@ -285,6 +289,8 @@ Allows you to get an image on your server, escaped
 as a base64 data-uri. Providing multiple arguments
 will produce an _array of strings_ with the data-uris
 of each argument, in order.
+
+#### hazel_php_variable
 
 ```javascript
 //p	phpv	hazel_php_variable
@@ -314,6 +320,8 @@ indicates a superglobal key for `$GLOBALS`, `$_SESSION`,
 particle with no _sigil_ is a string or integer key.
 The indices 16 and '16' are the same index anyway, so 
 quotes are not needed for string keys.
+
+#### hazel_if_variable
 
 ```javascript
 //k	ifv	hazel_if_variable
