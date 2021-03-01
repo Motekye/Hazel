@@ -8,11 +8,13 @@ future ports to other languages.
 
 Package includes the following files...
 
-* hazel.php ............. plain hazel program
-* hazelr.php ............ with reporting feature
-* hazel-samples.php ..... sample function hooks
-* hz.php ................ sample invocation
-* def.hz ................ sample shortcuts
+```
+hazel.php ............. plain hazel program
+hazelr.php ............ with reporting feature
+hazel-samples.php ..... sample function hooks
+hz.php ................ sample invocation
+def.hz ................ sample shortcuts
+```
 
 The sample invocation is a basic PHP script that includes
 hazel, then fetches files with a glob from the querystring.
@@ -25,14 +27,14 @@ included in the output. Usage...
 <script type="text/javascript" src="hz.php?api/class-*.hz"></script>
 ```
 
-The sample invocation also includes samples.php and runs
-hazel() over def.hz prior to loading the request. This is
+The sample invocation also includes _hazel-samples.php_ and runs
+hazel() over _def.hz_ prior to loading the request. This is
 how you would define your own set of custom function hooks
 and common macros to all your projects. I included my own
 with this package as examples, but I would assume anyone 
 using Hazel would want to make their own shortcuts.
 
-Make copies of and edit hz.php to suit your needs.
+Make copies of and edit _hz.php_ to suit your needs.
 
 Hazel (c) 2017-2021 - 1002px.com - released under MIT license.
 
@@ -48,7 +50,7 @@ new structural blocks resembling for(){} or while(){}...
 ```javascript
 //=	exact match macro
 //s	macros exclusively in strings
-//v	macros without : after or . before
+//v	words without : after or . before
 //f	function wrapper template
 //b	block wrapper template
 //p	procedure hook for function wrapper
@@ -61,13 +63,13 @@ new structural blocks resembling for(){} or while(){}...
 ```
 
 You may use `##` instead of `//` if you want to preserve 
-syntax highlighting on the terms. If you are not minifying
-the code, these will be turned into `//`.
+syntax highlighting on the command. If you are not minifying
+the code, these will be turned into `//` commands.
 
 ## Examples
 
 ```javascript
-//b	after	setTimeout(function(){#B},#0);
+##b	after	setTimeout(function(){#B},#0);
 
 // USE...
 
@@ -196,7 +198,7 @@ use them, the clause is just ignored.
 
 ## Sample hooks included
 
-These functions are defined in hazel-samples.php and
+These functions are defined in _hazel-samples.php_ and
 provide some added functionality and inspiration for
 writing new function and block wrapper hooks.
 
