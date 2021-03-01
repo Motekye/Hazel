@@ -4,7 +4,7 @@ Package includes the following files...
 
 hazel.php ............. plain hazel program
 hazelr.php ............ with reporting feature
-samples.php ........... sample hooks
+hazel-samples.php ..... sample function hooks
 hz.php ................ sample invocation
 def.hz ................ sample shortcuts
 
