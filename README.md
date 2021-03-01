@@ -81,7 +81,7 @@ the code, these will be turned into `//` commands.
 Comment lines with `//c` or `##c` expect a single term, which 
 when found at the beginning of a line, will strip that line
 from the output. This is useful for adding and removing lines
-of debugging code by only changing a single value.
+of debugging code by only changing a single command.
 
 ```javascript
 //i	path/to/script.hz
@@ -92,6 +92,15 @@ Include another Hazel script, or plain javascript file. Do not
 put quotes around the file names.
 
 ## Function and block wrappers
+
+```javascript
+##f	if<>	if(#0&&#0.nodeType==1)
+
+// USE...
+
+if<>(elm){ do.something(elm) }
+else { do.something_else(); }
+```
 
 ```javascript
 ##b	after	setTimeout(function(){#B},#0);
