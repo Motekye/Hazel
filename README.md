@@ -243,14 +243,14 @@ The PHP function handling the block gets two extra
 arguments for the `#B` block and `#E` else block.
 
 ```php
-function my_hazel_function($ins,$arg,$blk,$els){
+function my_hazel_block($ins,$arg,$blk,$els){
 	return "some code";
 }
 ```
 
 The `else` clauses are entirely optional. They are
 checked for with every custom block, but if you don't
-use them, the clause is just ignored.
+use them the clause is simply ignored.
 
 # Sample hooks included
 
