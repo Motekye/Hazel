@@ -52,6 +52,10 @@ new structural blocks resembling for(){} or while(){}...
 //c define starter for comment line
 ```
 
+You may use `##` instead of `//` if you want to preserve 
+syntax highlighting on the terms. If you are not minifying
+the code, these will be turned into `//`.
+
 ## Examples
 
 ```javascript
@@ -63,9 +67,24 @@ after(1000){ do.something(); }
 ```
 
 ```javascript
-//b forln for(#1=0;#1<#0.length;#1++){#B}
+##b forln for(#1=0;#1<#0.length;#1++){#B}
 
 // USE...
 
 forln(arr;i){ do.something(arr[i]); }
+```
+
+```javascript
+//= (<> document.createElement(
+//v BODY  document.body
+//= ..AP  .appendChild
+//= ..IH  .innerHTML
+//= ..SA  .setAttribute
+//= ..SC( .setAttribute('class',
+
+var EL = (<>'div');
+BODY..AP(EL);
+EL..IH = "Hello World.";
+EL..SC = "example";
+EL..SA('id','ex-002');
 ```
