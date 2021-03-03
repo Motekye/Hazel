@@ -11,6 +11,7 @@
 	header("Content-type: text/javascript\r\n");
 
 	$QUERY = urldecode($_SERVER['QUERY_STRING']);
+	$QUERY = str_replace('../','',$QUERY);
 
 	// start request with ! to disable minify, start with ? for reporting:
 	if(substr($QUERY,0,1)=='!'){ $QUERY=substr($QUERY,1); $m=false; } else { $m=true; }
