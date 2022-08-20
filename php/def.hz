@@ -1,0 +1,157 @@
+
+
+
+
+
+//		PHP FUNCTION HOOKS FOR HAZEL...
+
+
+
+
+
+//k	strf	hazel_string_filter
+
+//p	img64	hazel_base64_image
+
+//p	phpv	hazel_php_variable
+
+//k	ifv	hazel_if_variable
+
+
+
+
+
+//		GENERIC JAVASCRIPT SHORTCUTS FOR HAZEL...
+
+
+
+
+
+		// for checking typeof
+##=	if-t(	if(typeof 
+##f	if-f	if(typeof #0=='function')
+##f	if-o	if(typeof #0=='object')
+##f	if-s	if(typeof #0=='string')
+##f	if-n	if(typeof #0=='number')
+##f	if-u	if(typeof #0=='undefined')
+##f	if<>	if(#0&&#0.nodeType==1)
+
+		// specialized loops
+##b	forln	for(#1=0;#1<#0.length;#1++){#B}
+##b	forlns	for(#1=0;#1<#0.length;#1+=#2){#B}
+##b	fordn	for(#1=#0.length-1;#1>-1;#1--){#B}
+##b	forch	for(#1=0;#1<#0.length;#1++){ #2=#0.charAt(#1);#B}
+
+		// math operations
+##=	(#	document.getElementById(
+##=	(<>	document.createElement(
+##=	(%:	parseInt(
+##=	(.:	parseFloat(
+##=	(+:	Math.max(
+##=	(-:	Math.min(
+##=	(=:	Math.abs(
+##=	(^:	Math.pow(
+##=	(*:	Math.ceil(
+##=	(_:	Math.floor(
+##=	(~:	Math.round(
+##=	(??)	Math.random()
+##=	(!>	console.log(
+
+		// flow control macros
+##=	r0;	return false;
+##=	r1;	return true;
+##=	rn;	return null;
+##=	ru;	return undefined;
+##=	fn{	function(){
+##=	^;	continue;
+##=	*;	break;
+##=	}{	}else{
+##=	}-(	}else if(
+
+		// special values
+##=	@W	window
+##=	@SX	window.scrollX
+##=	@SY	window.scrollY
+##=	@IH	window.innerHeight
+##=	@IW	window.innerWidth
+##=	@B	document.body
+##=	@H	document.head
+##=	@R	document.documentElement
+##=	@D	document
+##=	@A	arguments
+##=	@0	arguments[0]
+##=	@1	arguments[1]
+##=	@2	arguments[2]
+##=	@3	arguments[3]
+##=	@4	arguments[4]
+##=	@5	arguments[5]
+##=	@6	arguments[6]
+##=	@7	arguments[7]
+##=	@8	arguments[8]
+##=	@9	arguments[9]
+
+		// common properties and methods
+##=	:ln	.length
+##=	:io	.indexOf
+##f	:has	.indexOf(#0)!=-1
+##=	:ss	.substring
+##=	:sr	.replace
+##=	:ca	.charAt
+##=	:ka	.charCodeAt
+##=	:ut	.getTime()
+##=	:2l	.toLowerCase()
+##=	:2u	.toUpperCase()
+##=	:2s	.toString()
+
+		// DOM related properties
+##=	:tx	.textContent
+##=	:nh	.innerHTML
+##=	:ga	.getAttribute
+##=	:sa	.setAttribute
+##=	:sc(	.setAttribute('class',
+##=	:ha	.hasAttribute
+##=	:ra	.removeAttribute
+##=	:oh	.offsetHeight
+##=	:ow	.offsetWidth
+##=	:ot	.offsetTop
+##=	:ol	.offsetLeft
+##=	:zw	.clientWidth
+##=	:zh	.clientHeight
+##=	:gt	.getElementsByTagName
+##=	:pn	.parentNode
+##=	:ps	.previousElementSibling
+##=	:ns	.nextElementSibling
+##=	:ch	.children
+##=	:tg	.tagName.toLowerCase()
+##=	:vl	.value
+##=	:nm	.name
+##=	:hf	.href
+##=	:ap	.appendChild
+##=	:wd	.width
+##=	:ht	.height
+##=	:st	.style
+##=	:tp	.style.top
+##=	:lf	.style.left
+##=	:rt	.style.right
+##=	:bm	.style.bottom
+##=	:ds	.style.display
+##=	:dbk	.style.display='block'
+##=	:dno	.style.display='none'
+##=	:din	.style.display='inline'
+##=	:po	.style.position
+##=	:pfx	.style.position='fixed'
+##=	:prl	.style.position='relative'
+##=	:pab	.style.position='absolute'
+##=	:bc	.style.backgroundColor
+##=	:op	.style.opacity
+
+		// Canvas or SVG methods
+##=	:gd	.getImageData
+##=	:pd	.putImageData
+
+
+
+// sample shortcuts for Hazel (c) 2017-2021 - 1002px.com
+
+
+
